@@ -11,6 +11,14 @@ router.get('/', restricted, (req, res) => {
     .catch(err => res.send(err));
 });
 
+router.get('/sessions', restricted, (req, res) => {
+  Users.findSessions()
+    .then(sessions => {
+      res.json(sessions);
+    })
+    .catch(err => res.send(err));
+});
+
 router.get('/user', (req, res) => {
 
   const user = req.body

@@ -5,10 +5,15 @@ module.exports = {
   find,
   findBy,
   findById,
+  findSessions,
 };
 
 function find() {
   return db("users").select("id", "username");
+}
+
+function findSessions() {
+  return db("sessions");
 }
 
 function findBy(filter) {
