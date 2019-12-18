@@ -1,9 +1,8 @@
-const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
+module.exports = (req, res, next) => {
 
-module.exports = server => {
-  server.use(helmet());
-  server.use(express.json());
-  server.use(cors());
+  if (req.session && req.session.user) {
+    next();
+  } else {
+    res.status(400).json({ message: 'You shall not pass' });
+  }
 };
